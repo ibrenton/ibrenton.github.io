@@ -5,6 +5,7 @@ var formatter = new Intl.NumberFormat('en-US', {
 
 
 // Change getBTCprice() to getCryptoPrice(): just make url variable based on a parameter, making this function reusable internally
+// Figure out a way to show the change in price since you last clicked
 
 function getBTCprice() {
     const url = 'https://api.coinbase.com/v2/prices/BTC-USD/spot';
@@ -20,6 +21,6 @@ function getBTCprice() {
             console.log(JSON.stringify(myJson));
             console.log('Price: $', myJson.data.amount);
             let price = formatter.format(myJson.data.amount);
-            priceDisplay.innerHTML = price;
+            priceDisplay.innerHTML = `Current price: ${price}`;
         });
 }
